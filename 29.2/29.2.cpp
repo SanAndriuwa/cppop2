@@ -3,53 +3,76 @@ using namespace std;
 class Zuikis
 {
 	private:
-		unsigned int a,b,c;
+		int pa,ra,d;
+		int efektyvumas;
 	public:
-		Zuikis(unsigned int a,unsigned int b,unsigned int c)
+		void getData(int a,int b,int c)
 		{
-			this->a=a;
-			this->b=b;
-			this->c=c;
+			pa=a;
+			ra=b;
+			d=c;
 		}
-		unsigned int aO()
+		void outData()
 		{
-			return a;
+			cout<<" zuikis paslepe "<<pa<<", buvo rasti "<<ra<<" ir "<<d<<" duzo iskart."<<endl;
 		}
-		unsigned int bO()
+		void eOut()
 		{
-			return b;
+			cout<<" zuikio efektyvumas yra "<<efektyvumas<<"."<<endl;
 		}
-		unsigned int cO()
+		void operator!()
 		{
-			return c;
+			efektyvumas=pa-d;
 		}
-		unsigned efektyvumas()
+};
+class Counter
+{
+	private:
+		unsigned int count;
+	public:
+		Counter():count(3){}
+		~Counter(){}
+		unsigned int getCount()
 		{
-			return a-(!false*c);
+			return count;	
+		}
+		void operator--()
+		{
+			--count;
 		}
 };
 int main()
 {
-	short k=0;
-	short n=3;
+	int n=3;
 	Zuikis** zuikis=new Zuikis*[n];
-	for(int i=3;i>0;i--)
+	Counter* counter=new Counter();
+	int i=0;
+	while(counter->getCount()>1)
 	{
-		unsigned int a,b,c;
+		int a,b,c;
 		cin>>a>>b>>c;
-		zuikis[k]=new Zuikis(a,b,c);
-		k++;
+		zuikis[i]=new Zuikis();
+		zuikis[i]->getData(a,b,c);
+		i++;
+		--counter;
 	}
-	k=0;
-	for(int i=3;i>0;i--)
+	counter=new Counter();
+	i=0;
+	while(counter->getCount()>0)
 	{
-		cout<<k+1<<" zuikis paslepe "<<zuikis[k]->aO()<<", buvo rasti "<<zuikis[k]->bO()<<" ir "<<zuikis[k]->cO()<<" duzo iskart"<<endl;
-		k++;
+		cout<<i+1;
+		zuikis[i]->outData();
+		i++;
+		--counter;
 	}
-	k=0;
-	for(int i=3;i>0;i--)
+	counter=new Counter();
+	i=0;
+	while(counter->getCount()>0)
 	{
-		cout<<k+1<<" zuikio efektyvumas yra "<<zuikis[k]->efektyvumas()<<endl;
-		k++;
+		cout<<i+1;
+		zuikis[i]->operator!();
+		zuikis[i]->eOut();
+		i++;
+		--counter;
 	}
 }
