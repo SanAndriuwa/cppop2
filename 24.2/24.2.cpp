@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
 class Bitininkas
 {
@@ -62,6 +63,6 @@ int main()
 	}
 	for(int i=0;i<n;i++)
 	{
-		cout<<i+1<<" bitininko pelnas: "<<medved[i]->outPelanas()<<endl;
+		cout<<i+1<<" bitininko pelnas: "<<fixed<<setprecision(2)<<medved[i]->outPelanas()<<"e"<<endl;
 	}
 }

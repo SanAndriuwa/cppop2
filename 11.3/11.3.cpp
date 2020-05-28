@@ -103,28 +103,23 @@ int main()
 
 	for(int i=0;i<n;i++)
 	{
-		cout<<i+1<<" zvejo tvenkinio plotas "<<fixed<<setprecision(2)<<zvejas[i]->TS()<<endl;
+		cout<<i+1<<" þvejo tvenkinio plotas "<<fixed<<setprecision(2)<<zvejas[i]->TS()<<endl;
 	}
 	for(int i=0;i<m;i++)
 	{
-		cout<<i+1<<" ukininko lauko plotas "<<fixed<<setprecision(2)<<ukininkas[i]->US()<<endl;
+		cout<<i+1<<" ûkininko lauko plotas "<<fixed<<setprecision(2)<<ukininkas[i]->US()<<endl;
 	}
-	cout<<"Gyventoju gautos baudos suma: "<<bauda<<endl;
-	if(max1==0&&max2==0)
+	cout<<"Gyventojø gautos baudos suma: "<<bauda<<endl;
+	if((max1==0&&max2==0) || zvejas[imax1]->TS()<2019 || ukininkas[imax2]->US()<2019)
 	{
-		
+		cout<<"stadiono nematysime dar 10 metø";
 	}
 	else
 	{
 		if(max1>max2)
 		{
-			cout<<imax1+1<<" zvejas taps milijonieriumi";
+			cout<<imax1+1<<" þvejas taps milijonieriumi";
 		}
-		else cout<<imax2+1<<" ukininkas taps milijonieriumi";
-	}
-	for(int i=0;i<m;i++)
-	{
-		cout<<endl;
-		
+		else cout<<imax2+1<<" ûkininkas taps milijonieriumi";
 	}
 }

@@ -26,7 +26,7 @@ class Zuikis
 		}
 		bool operator*()
 		{
-			if(pa*2<ra*2 || pa*2<d*2)
+			if(pa*2<ra*2 || pa*2<d*2 || ra*2<d*2)
 			{
 				return true;
 			}

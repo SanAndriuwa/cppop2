@@ -6,7 +6,7 @@ class Zuikis
 		int pa,ra,d;
 		int efektyvumas;
 	public:
-		void getData(int a,int b,int c)
+		Zuikis(int a,int b,int c)
 		{
 			pa=a;
 			ra=b;
@@ -14,7 +14,7 @@ class Zuikis
 		}
 		void outData()
 		{
-			cout<<" zuikis paslepe "<<pa<<", buvo rasti "<<ra<<" ir "<<d<<" duzo iskart."<<endl;
+			cout<<" zuikis paslepe "<<pa<<", buvo rasti "<<ra<<" ir "<<d<<" duo iškart."<<endl;
 		}
 		void eOut()
 		{
@@ -26,11 +26,15 @@ class Zuikis
 		}
 		bool operator*()
 		{
-			if(pa*2<ra*2 || pa*2<d*2)
+			if(pa*2<ra*2 || pa*2<d*2 || ra*2<d*2)
 			{
 				return true;
 			}
 			else return false;
+		}
+		Zuikis* operator+(Zuikis* obj2)
+		{
+			return new Zuikis(this->pa+obj2->pa,this->ra+obj2->ra,this->d+obj2->d);
 		}
 
 };
@@ -60,8 +64,7 @@ int main()
 	{
 		int a,b,c;
 		cin>>a>>b>>c;
-		zuikis[i]=new Zuikis();
-		zuikis[i]->getData(a,b,c);
+		zuikis[i]=new Zuikis(a,b,c);
 		i++;
 		--counter;
 	}
@@ -86,11 +89,16 @@ int main()
 	}
 	if(zuikis[2]->operator*())
 	{
-		cout<<"Ievutei issiustas saukimas i teisma.";
+		cout<<"Ievutei išsiustas šaukimas i teisma."<<endl;
+		Zuikis* temp=zuikis[2]->operator+(zuikis[0]);
+		if(temp->operator*())
+		{
+			cout<<"Algelis neišgelbetu Ievutes.";
+		}
+		else cout<<"Algelio deka Ievute išteisinta.";
 	}
 	else 
 	{
 		cout<<"Ievute nesukciavo.";
-
 	}
 }
