@@ -20,7 +20,8 @@ class Atlikejas
 		}
 		bool operator*()
 		{
-			if((double)balansas*0.01>=0.66)
+			cout<<balansas*10;
+			if((balansas*10)>=660)
 			{
 				return true;
 			}
@@ -40,7 +41,7 @@ class Atlikejas
 		}
 		Atlikejas* operator+(Atlikejas* obj2)
 		{
-			return new Atlikejas(this->x+obj2->x,this->y+obj2->y,this->z+obj2->z,this->t+obj2->t);
+			return new Atlikejas(this->x+obj2->x,this->y+obj2->y,this->z+obj2->z,0+obj2->t);
 		}
 };
 int main()
@@ -60,7 +61,7 @@ int main()
 	}
 	for(int i=0;i<n;i++)
 	{
-		cout<<i+1<<" atlikejo balanasas yra ";
+		cout<<i+1<<" atlikejo balansas yra ";
 		if(atlikejas[i]->outB()>0)
 		{
 			cout<<"+"<<atlikejas[i]->outB()<<endl;

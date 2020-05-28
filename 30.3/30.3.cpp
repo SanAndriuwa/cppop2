@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 class Laikas
 {
@@ -21,13 +22,17 @@ class Laikas
 		{
 			return s;	
 		}
-		int operator+(Laikas* obj2)
+		int operator-(Laikas* obj2)
 		{
-			if(this->s+obj2->s>=86400)
+			if(this->s-obj2->s>=86400)
 			{
-				return (this->s+obj2->s-86400);
+				return abs((this->s-obj2->s-86400));
 			}
-			else return this->s+obj2->s;
+			else if(this->s-obj2->s<0)
+			{
+				return this->s-obj2->s+86400;
+			}
+			else return abs(this->s-obj2->s);
 		}
 };
 void outTime(int val)
@@ -66,16 +71,20 @@ int main()
 		laikas[i]->getData(a,b,c);
 		laikas[i]->conv();
 	}
-	int max=0;
+	int min=86400;
 	for(int i=0;i<n-1;i++)
 	{
 		for(int j=i+1;j<n;j++)
 		{
-			if(laikas[i]->operator+(laikas[j])>max)
+			if(laikas[i]->operator-(laikas[j])<min)
 			{
-				max=laikas[i]->operator+(laikas[j]);
+				min=laikas[i]->operator-(laikas[j]);
+			}
+			if(laikas[j]->operator-(laikas[i])<min)
+			{
+				min=laikas[j]->operator-(laikas[i]);
 			}
 		}
 	}
-	outTime(max);
+	outTime(min);
 }

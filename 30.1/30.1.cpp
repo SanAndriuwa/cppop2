@@ -21,18 +21,10 @@ class Laikas
 		{
 			return s;	
 		}
-		int operator+(Laikas* obj2)
-		{
-			if(this->s+obj2->s>=86400)
-			{
-				return (this->s+obj2->s-86400);
-			}
-			else return this->s+obj2->s;
-		}
-};
-void outTime(int val)
+		void operator/(int val)
 		{
 			int temp;
+			val=val/3;
 			if(val/3600<10)
 			{
 				cout<<"0";
@@ -52,30 +44,24 @@ void outTime(int val)
 				cout<<"0";
 			}
 			cout<<val;
+			s=s/3;
 		}
+};
 int main()
 {
 	int n;
 	cin>>n;
-	Laikas** laikas=new Laikas*[n];
+	Laikas laikas;
+	int a,b,c;
+	cin>>a>>b>>c;
+	laikas.getData(a,b,c);
+	laikas.conv();
 	for(int i=0;i<n;i++)
 	{
-		int a,b,c;
-		cin>>a>>b>>c;
-		laikas[i]=new Laikas();
-		laikas[i]->getData(a,b,c);
-		laikas[i]->conv();
-	}
-	int max=0;
-	for(int i=0;i<n-1;i++)
-	{
-		for(int j=i+1;j<n;j++)
+		laikas.operator/(laikas.outS());
+		if(i!=n-1)
 		{
-			if(laikas[i]->operator+(laikas[j])>max)
-			{
-				max=laikas[i]->operator+(laikas[j]);
-			}
+			cout<<endl;
 		}
 	}
-	outTime(max);
 }

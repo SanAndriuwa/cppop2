@@ -31,7 +31,7 @@ class Bitininkas
 		}
 		double operator*()
 		{
-			if(count==0)
+			if(count==0 || bites-count*1000<1000)
 			{
 				pelnas=statines*2;
 			}
